@@ -1,61 +1,60 @@
-🧩 LLM from Scratch — Final Study Notes ✅
+✅ Project: Build LLM from scratch (Step-by-Step)
 
-✅ Step 1: Tokenizer
-- Break text into tokens (words).
-- Assign each unique token a number (vocab).
-- Example: "Hello how are you hello"
-→ Vocab: {Hello: 0, how: 1, are: 2, you: 3, hello: 4}
-→ Encoded: [0, 1, 2, 3, 4]
+Progress:
+- ✅ Tokenization:
+  Text converted to tokens (words to numbers)
 
-✅ Step 2: Embedding
-- Convert tokens into vectors (arrays of numbers) with random values.
-- Each word gets a vector like:
-  'Hello' → [0.12, 0.53, 0.92, ...]
-- These vectors represent "meaning in math space."
+- ✅ Embedding Layer:
+  Token IDs converted to vectors (random numbers initially)
 
-✅ Step 3: Attention Mechanism
-- Brain of the model: decides which words are important.
-- Create three versions of vectors:
-  - Q = Query (what we are asking)
-  - K = Key (what knowledge is stored)
-  - V = Value (what meaning to use)
-  
-- Compute focus (attention scores):
-  `Q @ K.T` → Compare queries to keys.
+- ✅ Attention Mechanism:
+  - Generate Q (Query), K (Key), V (Value)
+  - Calculate attention scores: Q @ K.T
+  - Scale attention scores to prevent exploding values
+  - Softmax to get attention weights
+  - Multiply attention weights with V to get context vectors
 
-- Normalize with softmax:
-  → Convert scores to percentages (attention weights).
+- ✅ Feedforward Neural Network:
+  - Context vectors passed through two layers (ReLU activation)
+  - Refines output before final prediction
 
-- Use attention weights:
-  `attention_weights @ V`
-  → Blend the important meanings together (context vectors).
+- ✅ Output Layer:
+  - Feedforward output @ output weights = logits
+  - Softmax to get probabilities
+  - np.argmax to predict final words
 
-✅ Step 4: Feedforward Layer
-- Pass context vectors through a small neural network for deeper thinking.
-- Layer 1: Multiply by weights, add bias, apply ReLU activation.
-- Layer 2: Multiply by second weights, add bias.
-- Output: refined final word vectors, full of meaning.
+- ✅ Multi-sentence dataset:
+  - Using external file `texts.txt` for multiple sentences
 
-✅ Step 5: Output Layer (Prediction)
-- Map final vectors to vocabulary size using random weights.
-- Apply softmax to get probabilities for each word.
-- Pick the word with the highest probability: `np.argmax()`
+- ✅ Model saving:
+  - Final model weights saved in `models/` directory
+  - vocab.pkl saved (for token-to-word mapping)
 
-🎉 Result: Model predicts a word from vocabulary!
+- ✅ Checkpoint saving:
+  - Auto-saves model every 100 epochs in `models/checkpoint_epoch_X/`
+  - Easy to load and continue training later
 
-✅ Notes:
-- Our model is not trained yet, so it repeats one word (like 'Hello') — this is expected!
-- If we train it, the random weights will adjust, and it will start making real predictions.
+- ✅ Auto-resume training:
+  - Automatically resumes from the latest checkpoint without manual input
 
-🧠 Python tips:
-- `.shape`: Get rows and columns of matrix.
-- `@`: Matrix multiplication (transform vectors).
-- `np.exp()`: Exponential for softmax.
-- `np.argmax()`: Pick highest probability.
+- ✅ Loss curve graph:
+  - Visualizes training progress
+  - Saved at `models/loss_curve.png`
 
-🚀 Completion:
-Tokenizer ✅
-Embedding ✅
-Attention ✅
-Feedforward ✅
-Output Prediction ✅
+Next step:
+➡️ Temperature sampling for generation
+- Make output more creative and less repetitive
+- Control randomness during text generation
+
+Optional future improvements:
+- Batch processing for faster training
+- Larger dataset (books, Wikipedia)
+- Multi-layer attention (closer to GPT models)
+- Save loss history as CSV
+- Generate text from checkpoints
+
+Status:
+✅ Clean and professional code
+✅ Fully working mini-LLM from scratch
+✅ Understood each step in training loop
+✅ Good sleep after productive learning! 🌙
