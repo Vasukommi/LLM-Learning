@@ -1,0 +1,26 @@
+Text: "Hello how are you hello"
+            ↓
+[Tokenizer]
+Tokens: ['Hello', 'how', 'are', 'you', 'hello']
+Token IDs: [0, 1, 2, 3, 4]
+            ↓
+[Embedding Layer]
+Token IDs → Vectors (random numbers)
+            ↓
+[Attention Mechanism]
+Vectors → Q, K, V
+Q @ K.T → Attention scores
+Softmax → Attention weights
+Attention weights @ V → Context vectors
+            ↓
+[Feedforward Layer]
+Context vectors → Feedforward Neural Network
+- First layer: ReLU activation
+- Second layer: Final refined vectors
+            ↓
+[Output Layer]
+Final vectors @ output weights → Scores (logits)
+Softmax → Probabilities
+np.argmax → Predicted words!
+            ↓
+Predicted output: ['Hello', 'Hello', 'Hello', 'Hello', 'Hello'] (for now!)

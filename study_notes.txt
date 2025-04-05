@@ -1,0 +1,61 @@
+🧩 LLM from Scratch — Final Study Notes ✅
+
+✅ Step 1: Tokenizer
+- Break text into tokens (words).
+- Assign each unique token a number (vocab).
+- Example: "Hello how are you hello"
+→ Vocab: {Hello: 0, how: 1, are: 2, you: 3, hello: 4}
+→ Encoded: [0, 1, 2, 3, 4]
+
+✅ Step 2: Embedding
+- Convert tokens into vectors (arrays of numbers) with random values.
+- Each word gets a vector like:
+  'Hello' → [0.12, 0.53, 0.92, ...]
+- These vectors represent "meaning in math space."
+
+✅ Step 3: Attention Mechanism
+- Brain of the model: decides which words are important.
+- Create three versions of vectors:
+  - Q = Query (what we are asking)
+  - K = Key (what knowledge is stored)
+  - V = Value (what meaning to use)
+  
+- Compute focus (attention scores):
+  `Q @ K.T` → Compare queries to keys.
+
+- Normalize with softmax:
+  → Convert scores to percentages (attention weights).
+
+- Use attention weights:
+  `attention_weights @ V`
+  → Blend the important meanings together (context vectors).
+
+✅ Step 4: Feedforward Layer
+- Pass context vectors through a small neural network for deeper thinking.
+- Layer 1: Multiply by weights, add bias, apply ReLU activation.
+- Layer 2: Multiply by second weights, add bias.
+- Output: refined final word vectors, full of meaning.
+
+✅ Step 5: Output Layer (Prediction)
+- Map final vectors to vocabulary size using random weights.
+- Apply softmax to get probabilities for each word.
+- Pick the word with the highest probability: `np.argmax()`
+
+🎉 Result: Model predicts a word from vocabulary!
+
+✅ Notes:
+- Our model is not trained yet, so it repeats one word (like 'Hello') — this is expected!
+- If we train it, the random weights will adjust, and it will start making real predictions.
+
+🧠 Python tips:
+- `.shape`: Get rows and columns of matrix.
+- `@`: Matrix multiplication (transform vectors).
+- `np.exp()`: Exponential for softmax.
+- `np.argmax()`: Pick highest probability.
+
+🚀 Completion:
+Tokenizer ✅
+Embedding ✅
+Attention ✅
+Feedforward ✅
+Output Prediction ✅
